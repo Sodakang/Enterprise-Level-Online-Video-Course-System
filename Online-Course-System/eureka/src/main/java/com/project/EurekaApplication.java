@@ -1,13 +1,13 @@
-package com.project.online_course_system;
+package com.project;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class OnlineCourseSystemApplication {
+public class EurekaApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(OnlineCourseSystemApplication.class, args);
+		SpringApplication.run(EurekaApplication.class, args);
 	}
 
 }
