@@ -1,1 +1,1 @@
-# Enterprise-Level-Online-Vedio-Course-System
+# Enterprise-Level-Online-Video-Course-System
