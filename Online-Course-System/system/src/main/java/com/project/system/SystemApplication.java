@@ -11,7 +11,7 @@ import org.springframework.core.env.ConfigurableEnvironment;
 
 @SpringBootApplication
 @EnableEurekaClient
-@MapperScan("com.project.system.dao")
+@MapperScan("com.project.server.dao")
 @ComponentScan("com.project")
 public class SystemApplication {
 
