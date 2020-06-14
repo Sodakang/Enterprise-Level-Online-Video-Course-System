@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <context id="Mysql" targetRuntime="MyBatis3" defaultModelType="flat">
+
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+
+        <!-- Add toString() to the entities. -->
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin" />
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/online_video_courses?useSSL=false&amp;serverTimezone=UTC&amp;allowPublicKeyRetrieval=true"
+                        userId="Lyle"
+                        password="Sunnyday@1997">
+        </jdbcConnection>
+
+        <!-- The location of entities. -->
+        <javaModelGenerator targetProject="src/main/java"
+                            targetPackage="com.project.server.entity"/>
+
+        <!-- The location of mapper xml files. -->
+        <sqlMapGenerator targetProject="src/main/resources"
+                         targetPackage="mapper"/>
+
+        <!-- The location of mapper classes. -->
+        <javaClientGenerator targetProject="src/main/java"
+                             targetPackage="com.project.server.dao"
+                             type="XMLMAPPER" />
+
+        <table tableName="test" domainObjectName="Test"/>
+    </context>
+</generatorConfiguration>
