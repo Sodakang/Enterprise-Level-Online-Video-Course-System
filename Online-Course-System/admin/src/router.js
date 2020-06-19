@@ -19,6 +19,7 @@ export default new Router({
         path: '/admin',
         component: Admin,
         children: [{
+            // the configuration of the subroutine cannot begin with '/'
             path: 'welcome',
             component: Welcome
         }]
