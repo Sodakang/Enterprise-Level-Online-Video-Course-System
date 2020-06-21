@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Login from './views/login'
 import Admin from './views/admin'
 import Welcome from './views/admin/welcome'
+import Chapter from './views/admin/chapter'
 
 Vue.use(Router)
 
@@ -22,6 +23,9 @@ export default new Router({
             // the configuration of the subroutine cannot begin with '/'
             path: 'welcome',
             component: Welcome
+        }, {
+            path: 'chapter',
+            component: Chapter
         }]
     }]
 })
