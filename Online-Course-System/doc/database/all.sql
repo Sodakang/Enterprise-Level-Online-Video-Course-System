@@ -14,3 +14,6 @@ create table `chapter` (
     `name` varchar(50),
     primary key (`id`)
 ) engine = innodb default charset = utf8mb4;
+
+insert into `chapter` (id, course_id, name) values ('00000000', '00000000', 'Test Chapter 1');
+insert into `chapter` (id, course_id, name) values ('00000001', '00000000', 'Test Chapter 2');
