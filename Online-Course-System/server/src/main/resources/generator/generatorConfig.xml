@@ -33,6 +33,7 @@
                              targetPackage="com.project.server.dao"
                              type="XMLMAPPER" />
 
-        <table tableName="test" domainObjectName="Test"/>
+<!--        <table tableName="test" domainObjectName="Test"/>-->
+        <table tableName="chapter" domainObjectName="Chapter"/>
     </context>
 </generatorConfiguration>
