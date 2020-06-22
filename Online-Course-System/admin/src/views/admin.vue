@@ -354,19 +354,20 @@
                 </div><!-- /.sidebar-shortcuts -->
 
                 <ul class="nav nav-list">
-                    <li class="">
-                        <a href="index.html">
+                    <li class="" id="welcome-sidebar">
+                        <router-link to="/admin/welcome">
                             <i class="menu-icon fa fa-tachometer"></i>
                             <span class="menu-text"> Welcome </span>
-                        </a>
+                        </router-link>
 
                         <b class="arrow"></b>
                     </li>
 
+                    <!-- System management.  -->
                     <li class="">
                         <a href="#" class="dropdown-toggle">
                             <i class="menu-icon fa fa-list"></i>
-                            <span class="menu-text"> System Management </span>
+                            <span class="menu-text"> System </span>
 
                             <b class="arrow fa fa-angle-down"></b>
                         </a>
@@ -388,6 +389,29 @@
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     Authority Management
                                 </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!-- Business management. -->
+                    <li class="">
+                        <a href="#" class="dropdown-toggle">
+                            <i class="menu-icon fa fa-list"></i>
+                            <span class="menu-text"> Business </span>
+
+                            <b class="arrow fa fa-angle-down"></b>
+                        </a>
+
+                        <b class="arrow"></b>
+
+                        <ul class="submenu">
+                            <li class="active" id="business-chapter-sidebar">
+                                <router-link to="/admin/business/chapter">
+                                    <i class="menu-icon fa fa-caret-right"></i>
+                                    Chapter Management
+                                </router-link>
 
                                 <b class="arrow"></b>
                             </li>
@@ -457,6 +481,26 @@
         methods: {
             login() {
                 this.$router.push("/admin")
+            },
+
+            /**
+             * Menu(li) active style.
+             * @Param id: the id of the current click menu.
+             */
+            activeSidebar: function(id) {
+                // Remove the active style for the sibling menus.
+                // Add the active style to the current click menu.
+                $("#" + id).siblings().removeClass("active");
+                $("#" + id).siblings().find("li").removeClass("active");
+                $("#" + id).addClass("active");
+
+                // If there is a parent menu, remove the active style for the sibling menus.
+                // And then add the open active style for the parent menu.
+                let parentLi = $("#" + id).parents("li");
+                if(parentLi) {
+                    parentLi.siblings().removeClass("open active");
+                    parentLi.addClass("open active");
+                }
             }
         }
     }
