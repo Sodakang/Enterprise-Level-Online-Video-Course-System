@@ -8,7 +8,8 @@
     export default {
         name: "welcome",
         mounted: function() {
-            this.$parent.activeSidebar("welcome-sidebar");
+            // The method I for making the sidebar active.
+            // this.$parent.activeSidebar("welcome-sidebar");
         },
         methods: {
         }

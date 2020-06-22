@@ -475,8 +475,23 @@
     export default {
         name: 'App',
         mounted: function() {
+            let _this = this;
             $('body').removeClass('class', 'login-layout light-login');
             $('body').attr('class', 'no-skin');
+            // The method II for making the sidebar active.
+            _this.activeSidebar(_this.$route.name.replace("/", "-") + "-sidebar");
+        },
+        watch: {
+          $route: {
+              handler: function (val, oldVal) {
+                  // The method II for making the sidebar active.
+                  console.log("----> page jump:", val, oldVal);
+                  let _this = this;
+                  _this.$nextTick(function () {  // It will be executed after the page finishes loading.
+                      _this.activeSidebar(_this.$route.name.replace("/", "-") + "-sidebar");
+                  })
+              }
+          }
         },
         methods: {
             login() {
