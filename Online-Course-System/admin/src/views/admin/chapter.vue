@@ -976,10 +976,19 @@
     export default {
         name: "business",
         mounted: function() {
+            let _this = this;
+            _this.list();
             // The method I for making the sidebar active.
             // this.$parent.activeSidebar("business-chapter-sidebar");
+
         },
         methods: {
+            list() {
+                let _this = this;
+                _this.$ajax.get('http://127.0.0.1:9002/business/admin/chapter/list').then((response) => {
+                    console.log("The results of searching the chapter list: ", response);
+                })
+            }
         }
     }
 </script>
