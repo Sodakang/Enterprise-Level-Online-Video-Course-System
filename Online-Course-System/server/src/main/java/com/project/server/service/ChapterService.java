@@ -1,5 +1,6 @@
 package com.project.server.service;
 
+import com.github.pagehelper.PageHelper;
 import com.project.server.dao.ChapterMapper;
 import com.project.server.dto.ChapterDto;
 import com.project.server.entity.Chapter;
@@ -17,6 +18,7 @@ public class ChapterService {
     private ChapterMapper chapterMapper;
 
     public List<ChapterDto> list() {
+        PageHelper.startPage(1, 1);  // The first select sentence after startPage() will be executed pagination.
         ChapterExample chapterExample = new ChapterExample();
         List<Chapter> chapterList = chapterMapper.selectByExample(chapterExample);
         List<ChapterDto> chapterDtoList = new ArrayList<>();
