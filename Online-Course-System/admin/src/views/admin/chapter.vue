@@ -1,7 +1,7 @@
 <template>
     <div>
         <p>
-            <button  v-on:click="list()" class="btn btn-white btn-default btn-round">
+            <button  v-on:click="list(1)" class="btn btn-white btn-default btn-round">
                 <i class="ace-icon fa fa-refresh green"/>
                 Refresh
             </button>
@@ -78,11 +78,14 @@
             </tr>
             </tbody>
         </table>
+        <pagination ref="pagination" v-bind:list="list" v-bind:itemCount="8"/>
     </div>
 </template>
 
 <script>
+    import Pagination from "../../components/pagination";
     export default {
+        components: {Pagination},
         name: "chapter",
         data: function() {
           return {
@@ -91,20 +94,22 @@
         },
         mounted: function() {
             let _this = this;
-            _this.list();
+            _this.$refs.pagination.size = 5;
+            _this.list(1);
             // The method I for making the sidebar active.
             // this.$parent.activeSidebar("business-chapter-sidebar");
 
         },
         methods: {
-            list() {
+            list(page) {
                 let _this = this;
                 _this.$ajax.post('http://127.0.0.1:9000/business/admin/chapter/list', {
-                    page: 1,
-                    size: 1
+                    page: page,
+                    size: _this.$refs.pagination.size
                 }).then((response) => {
                     console.log("The results of searching the chapter list: ", response);
                     _this.chapters = response.data.list;
+                    _this.$refs.pagination.render(page, response.data.total);
                 })
             }
         }
