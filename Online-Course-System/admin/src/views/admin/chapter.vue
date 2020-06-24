@@ -1,6 +1,11 @@
 <template>
     <div>
         <p>
+            <button  v-on:click="add" class="btn btn-white btn-default btn-round">
+                <i class="ace-icon fa fa-edit blue"/>
+                Create
+            </button>
+            &nbsp;
             <button  v-on:click="list(1)" class="btn btn-white btn-default btn-round">
                 <i class="ace-icon fa fa-refresh green"/>
                 Refresh
@@ -78,6 +83,37 @@
             </tr>
             </tbody>
         </table>
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label for="name" class="col-sm-2 control-label">Name</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="name" placeholder="Name">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="course-id" class="col-sm-2 control-label">Course ID</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="course-id" placeholder="Course ID">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-primary">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <pagination ref="pagination" v-bind:list="list" v-bind:itemCount="8"/>
     </div>
 </template>
@@ -101,6 +137,10 @@
 
         },
         methods: {
+            add() {
+                let _this = this;
+                $(".modal").modal("show");
+            },
             list(page) {
                 let _this = this;
                 _this.$ajax.post('http://127.0.0.1:9000/business/admin/chapter/list', {
