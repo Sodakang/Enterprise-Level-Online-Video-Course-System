@@ -84,12 +84,12 @@
             </tbody>
         </table>
         <!-- Modal -->
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal fade" id="form-modal" tabindex="-1" role="dialog" aria-labelledby="form-modal-label">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                        <h4 class="modal-title" id="form-modal-label">Create New Chapter</h4>
                     </div>
                     <div class="modal-body">
                         <form class="form-horizontal">
@@ -139,7 +139,7 @@
         },
         methods: {
             add() {
-                $(".modal").modal("show");
+                $("#form-modal").modal("show");
             },
 
             list(page) {
@@ -149,8 +149,9 @@
                     size: _this.$refs.pagination.size
                 }).then((response) => {
                     console.log("The results of searching the chapter list: ", response);
-                    _this.chapters = response.data.list;
-                    _this.$refs.pagination.render(page, response.data.total);
+                    let resp = response.data;
+                    _this.chapters = resp.content.list;
+                    _this.$refs.pagination.render(page, resp.content.total);
                 })
             },
 
@@ -159,6 +160,11 @@
                 _this.$ajax.post('http://127.0.0.1:9000/business/admin/chapter/save',
                     _this.chapter).then((response) => {
                         console.log("The results of saving the chapter list: ", response);
+                        let resp = response.data;
+                        if(resp.success) {
+                            $("#form-modal").modal("hide");
+                            _this.list(1);
+                        }
                 })
             }
         }
