@@ -7,7 +7,9 @@ import com.project.server.dto.ChapterDto;
 import com.project.server.dto.PageDto;
 import com.project.server.entity.Chapter;
 import com.project.server.entity.ChapterExample;
+import com.project.server.util.UuidUtil;
 import org.springframework.beans.BeanUtils;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -32,5 +34,12 @@ public class ChapterService {
             chapterDtoList.add(chapterDto);
         }
         pageDto.setList(chapterDtoList);
+    }
+
+    public void save(ChapterDto chapterDto) {
+        chapterDto.setId(UuidUtil.getShortUuid());
+        Chapter chapter = new Chapter();
+        BeanUtils.copyProperties(chapterDto, chapter);
+        chapterMapper.insert(chapter);
     }
 }
