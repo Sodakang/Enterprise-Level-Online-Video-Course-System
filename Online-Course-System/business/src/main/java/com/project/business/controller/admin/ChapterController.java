@@ -7,9 +7,7 @@ import com.project.server.entity.Chapter;
 import com.project.server.service.ChapterService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -23,7 +21,7 @@ public class ChapterController {
     @Resource
     private ChapterService chapterService;
 
-    @RequestMapping("/list")
+    @PostMapping("/list")
     public ResponseDto<PageDto<ChapterDto>> list(@RequestBody PageDto<ChapterDto> pageDto) {
         LOG.info("pageDto: {}", pageDto);
         ResponseDto<PageDto<ChapterDto>> responseDto = new ResponseDto<>();
@@ -32,12 +30,20 @@ public class ChapterController {
         return responseDto;
     }
 
-    @RequestMapping("/save")
+    @PostMapping("/save")
     public ResponseDto<ChapterDto> save(@RequestBody ChapterDto chapterDto) {
         LOG.info("chapterDtp: {}", chapterDto);
         ResponseDto<ChapterDto> responseDto = new ResponseDto<>();
         chapterService.save(chapterDto);
         responseDto.setContent(chapterDto);
+        return responseDto;
+    }
+
+    @RequestMapping("/delete/{id}")
+    public ResponseDto<ChapterDto> save(@PathVariable String id) {
+        LOG.info("id: {}", id);
+        ResponseDto<ChapterDto> responseDto = new ResponseDto<>();
+        chapterService.delete(id);
         return responseDto;
     }
 
