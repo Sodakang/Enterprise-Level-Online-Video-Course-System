@@ -109,10 +109,12 @@
 
             list(page) {
                 let _this = this;
+                Loading.show();
                 _this.$ajax.post('http://127.0.0.1:9000/business/admin/chapter/list', {
                     page: page,
                     size: _this.$refs.pagination.size
                 }).then((response) => {
+                    Loading.hide();
                     console.log("The results of searching the chapter list: ", response);
                     let resp = response.data;
                     _this.chapters = resp.content.list;
@@ -122,8 +124,10 @@
 
             save() {
                 let _this = this;
+                Loading.show();
                 _this.$ajax.post('http://127.0.0.1:9000/business/admin/chapter/save',
                     _this.chapter).then((response) => {
+                        Loading.hide();
                         console.log("The results of saving the chapter list: ", response);
                         let resp = response.data;
                         if(resp.success) {
@@ -145,7 +149,9 @@
                     cancelButtonColor: '#d33',
                     confirmButtonText: 'Yes, delete it!'
                 }).then((result) => {
+                    Loading.show();
                     if (result.value) {
+                        Loading.hide();
                         _this.$ajax.post('http://127.0.0.1:9000/business/admin/chapter/delete/' + id).then((response) => {
                             console.log("The results of deleting the chapter list: ", response);
                             let resp = response.data;
