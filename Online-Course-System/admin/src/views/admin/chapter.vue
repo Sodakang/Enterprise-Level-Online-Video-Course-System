@@ -129,6 +129,7 @@
                         if(resp.success) {
                             $("#form-modal").modal("hide");
                             _this.list(1);
+                            toast.success("Save successfully!");
                         }
                 })
             },
@@ -149,11 +150,7 @@
                             console.log("The results of deleting the chapter list: ", response);
                             let resp = response.data;
                             if(resp.success) {
-                                Swal.fire(
-                                    'Deleted!',
-                                    'The chapter has been deleted.',
-                                    'success'
-                                );
+                                toast.success("Delete successfully!");
                                 _this.list(1);
                             }
                         });
