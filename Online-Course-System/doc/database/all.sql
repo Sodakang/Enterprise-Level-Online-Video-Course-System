@@ -35,3 +35,21 @@ insert into `chapter` (id, course_id, name) values ('00000016', '00000000', 'Tes
 insert into `chapter` (id, course_id, name) values ('00000017', '00000000', 'Test Chapter 17');
 insert into `chapter` (id, course_id, name) values ('00000018', '00000000', 'Test Chapter 18');
 insert into `chapter` (id, course_id, name) values ('00000019', '00000000', 'Test Chapter 19');
+
+drop table if exists `section`;
+create table `section` (
+    `id` char(8) not null default '',
+    `title` varchar(50) not null,
+    `course_id` char(8),
+    `chapter_id` char(8),
+    `video` varchar(200),
+    `time` int comment 'Video length in seconds',
+    `charge` char(1) comment 'Charge or not: C means charge and F means free',
+    `sort` int,
+    `created_at` datetime(3) comment 'Create time',
+    `updated_at` datetime(3) comment 'Update time',
+    primary key (`id`)
+) engine = InnoDB default charset = utf8mb4;
+
+insert into `section` (id, title, course_id, chapter_id, video, time, charge, sort, created_at, updated_at)
+VALUES ('00000001', 'Test Section 01', '00000001', '00000000', '', 500, 'F', 1, now(), now());
