@@ -13,10 +13,10 @@ Validator = {
             return true;
         }
         if (!Tool.isLength(value, min, max)) {
-            Toast.warning(text + "length" + min + "~" + max + "characters");
+            Toast.warning(text + " must contains " + min + "~" + max + " characters");
             return false;
         } else {
-            return true
+            return true;
         }
     }
 };

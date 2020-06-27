@@ -140,6 +140,8 @@
                             $("#form-modal").modal("hide");
                             _this.list(1);
                             Toast.success("Save successfully!");
+                        } else {
+                            Toast.warning(resp.message);
                         }
                 })
             },
