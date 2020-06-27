@@ -1,7 +1,7 @@
 Validator = {
     require: function (value, text) {
         if (Tool.isEmpty(value)) {
-            Toast.warning(text + "cannot be empty!");
+            Toast.warning(text + " cannot be empty!");
             return false;
         } else {
             return true
