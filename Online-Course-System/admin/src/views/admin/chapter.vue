@@ -133,34 +133,24 @@
                         if(resp.success) {
                             $("#form-modal").modal("hide");
                             _this.list(1);
-                            toast.success("Save successfully!");
+                            Toast.success("Save successfully!");
                         }
                 })
             },
 
             del(id) {
                 let _this = this;
-                Swal.fire({
-                    title: 'Are you sure?',
-                    text: "You won't be able to revert this!",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, delete it!'
-                }).then((result) => {
+                Confirm.show("You won't be able to revert this deletion, are you sure?", function () {
                     Loading.show();
-                    if (result.value) {
+                    _this.$ajax.post('http://127.0.0.1:9000/business/admin/chapter/delete/' + id).then((response) => {
                         Loading.hide();
-                        _this.$ajax.post('http://127.0.0.1:9000/business/admin/chapter/delete/' + id).then((response) => {
-                            console.log("The results of deleting the chapter list: ", response);
-                            let resp = response.data;
-                            if(resp.success) {
-                                toast.success("Delete successfully!");
-                                _this.list(1);
-                            }
-                        });
-                    }
+                        console.log("The results of deleting the chapter list: ", response);
+                        let resp = response.data;
+                        if(resp.success) {
+                            Toast.success("Delete successfully!");
+                            _this.list(1);
+                        }
+                    });
                 });
             }
         }
