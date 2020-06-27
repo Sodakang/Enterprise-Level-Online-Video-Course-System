@@ -95,18 +95,29 @@
 
         },
         methods: {
+            /**
+             * Click "Create".
+             */
             add() {
                 let _this = this;
                 this.chapter = {};
                 $("#form-modal").modal("show");
             },
 
+            /**
+             * Click "Edit".
+             * @param chapter
+             */
             edit(chapter) {
                 let _this = this;
                 _this.chapter = $.extend({}, chapter);
                 $("#form-modal").modal("show");
             },
 
+            /**
+             * List query.
+             * @param page
+             */
             list(page) {
                 let _this = this;
                 Loading.show();
@@ -115,13 +126,16 @@
                     size: _this.$refs.pagination.size
                 }).then((response) => {
                     Loading.hide();
-                    console.log("The results of searching the chapter list: ", response);
+                    // console.log("The results of searching the chapter list: ", response);
                     let resp = response.data;
                     _this.chapters = resp.content.list;
                     _this.$refs.pagination.render(page, resp.content.total);
                 })
             },
 
+            /**
+             * Click "Save".
+             */
             save() {
                 let _this = this;
                 // Check before saving.
@@ -134,7 +148,7 @@
                 _this.$ajax.post('http://127.0.0.1:9000/business/admin/chapter/save',
                     _this.chapter).then((response) => {
                         Loading.hide();
-                        console.log("The results of saving the chapter list: ", response);
+                        // console.log("The results of saving the chapter list: ", response);
                         let resp = response.data;
                         if(resp.success) {
                             $("#form-modal").modal("hide");
@@ -146,13 +160,17 @@
                 })
             },
 
+            /**
+             * Click "Delete".
+             * @param id
+             */
             del(id) {
                 let _this = this;
                 Confirm.show("You won't be able to revert this deletion, are you sure?", function () {
                     Loading.show();
                     _this.$ajax.post('http://127.0.0.1:9000/business/admin/chapter/delete/' + id).then((response) => {
                         Loading.hide();
-                        console.log("The results of deleting the chapter list: ", response);
+                        // console.log("The results of deleting the chapter list: ", response);
                         let resp = response.data;
                         if(resp.success) {
                             Toast.success("Delete successfully!");
