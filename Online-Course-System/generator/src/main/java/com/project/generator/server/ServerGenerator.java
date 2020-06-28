@@ -11,6 +11,8 @@ public class ServerGenerator {
 
     private static String toServicePath = "server//src//main//java//com//project//server//service//";
 
+    private static String toControllerPath = "business//src//main//java//com//project//business//controller//admin//";
+
     public static void main(String[] args) throws IOException, TemplateException {
         String Domain = "Section";
         String domain = "section";
@@ -18,7 +20,12 @@ public class ServerGenerator {
         map.put("Domain", Domain);
         map.put("domain", domain);
 
+        // Generate service.
         FreemarkerUtil.initConfig("service.ftl");
         FreemarkerUtil.generator(toServicePath + Domain + "Service.java", map);
+
+        // Generate controller.
+        FreemarkerUtil.initConfig("controller.ftl");
+        FreemarkerUtil.generator(toControllerPath + Domain + "Controller.java", map);
     }
 }
