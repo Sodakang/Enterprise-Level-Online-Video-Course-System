@@ -14,7 +14,7 @@ import java.util.Map;
 
 public class FreemarkerUtil {
 
-    private static String ftlPath = "generator\\src\\main\\java\\com\\course\\generator\\ftl\\";
+    private static String ftlPath = "generator//src//main//java//com//project//generator//ftl//";
 
     private static Template temp;
 

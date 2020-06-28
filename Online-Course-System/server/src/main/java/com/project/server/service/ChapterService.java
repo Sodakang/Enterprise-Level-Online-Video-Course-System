@@ -9,8 +9,6 @@ import com.project.server.entity.Chapter;
 import com.project.server.entity.ChapterExample;
 import com.project.server.util.CopyUtil;
 import com.project.server.util.UuidUtil;
-import org.springframework.beans.BeanUtils;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
