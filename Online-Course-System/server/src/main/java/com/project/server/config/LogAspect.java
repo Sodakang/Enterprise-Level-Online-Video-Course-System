@@ -47,15 +47,15 @@ public class LogAspect {
         String name = signature.getName();
 
         // Start printing out the business operations.
-        String nameCn = "";
-        if (name.contains("list") || name.contains("query")) {
-            nameCn = "Select";
+        String operationName = "";
+        if (name.contains("list") || name.contains("query") || name.contains("select")) {
+            operationName = "Select";
         } else if (name.contains("save")) {
-            nameCn = "Save";
+            operationName = "Save";
         } else if (name.contains("delete")) {
-            nameCn = "Delete";
+            operationName = "Delete";
         } else {
-            nameCn = "Operate";
+            operationName = "Operate";
         }
 
         // Use reflection to achieve the business name.
@@ -74,7 +74,7 @@ public class LogAspect {
         }
 
         // Print out the request information.
-        LOG.info("------------- [{}]{} Begin -------------", businessName, nameCn);
+        LOG.info("------------- [{}]{} Begin -------------", businessName, operationName);
         LOG.info("Request Address: {} {}", request.getRequestURL().toString(), request.getMethod());
         LOG.info("Class and Method Name: {}.{}", signature.getDeclaringTypeName(), name);
         LOG.info("Remote Address: {}", request.getRemoteAddr());
