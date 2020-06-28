@@ -1,4 +1,4 @@
-package com.project.business.controller.admin;
+package com.project.${module}.controller.admin;
 
 import com.project.server.dto.${Domain}Dto;
 import com.project.server.dto.PageDto;
