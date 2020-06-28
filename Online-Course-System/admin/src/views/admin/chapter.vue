@@ -121,7 +121,7 @@
             list(page) {
                 let _this = this;
                 Loading.show();
-                _this.$ajax.post('http://127.0.0.1:9000/business/admin/chapter/list', {
+                _this.$ajax.post(process.env.VUE_APP_SERVER + '/business/admin/chapter/list', {
                     page: page,
                     size: _this.$refs.pagination.size
                 }).then((response) => {
@@ -145,7 +145,7 @@
                     return;
                 }
                 Loading.show();
-                _this.$ajax.post('http://127.0.0.1:9000/business/admin/chapter/save',
+                _this.$ajax.post(process.env.VUE_APP_SERVER + '/business/admin/chapter/save',
                     _this.chapter).then((response) => {
                         Loading.hide();
                         // console.log("The results of saving the chapter list: ", response);
@@ -168,7 +168,7 @@
                 let _this = this;
                 Confirm.show("You won't be able to revert this deletion, are you sure?", function () {
                     Loading.show();
-                    _this.$ajax.post('http://127.0.0.1:9000/business/admin/chapter/delete/' + id).then((response) => {
+                    _this.$ajax.post(process.env.VUE_APP_SERVER + '/business/admin/chapter/delete/' + id).then((response) => {
                         Loading.hide();
                         // console.log("The results of deleting the chapter list: ", response);
                         let resp = response.data;
