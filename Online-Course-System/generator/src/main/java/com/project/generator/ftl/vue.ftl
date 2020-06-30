@@ -14,7 +14,8 @@
         <table id="simple-table" class="table  table-bordered table-hover">
             <thead>
             <tr><#list fieldList as field>
-                <th>${field.comment}</th></#list>
+                    <#if field.nameHump!="createdAt" && field.nameHump!="updatedAt">
+                <th>${field.comment}</th></#if></#list>
                 <th>Operations</th>
             </tr>
             </thead>
@@ -22,7 +23,9 @@
             <tbody>
             <tr v-for="${domain} in ${domain}s">
                 <#list fieldList as field>
-                    <td>{{${domain}.${field.nameHump}}}</td>
+                    <#if field.nameHump!="createdAt" && field.nameHump!="updatedAt">
+                <td>{{${domain}.${field.nameHump}}}</td>
+                    </#if>
                 </#list>
                 <td>
                     <div class="hidden-sm hidden-xs btn-group">
@@ -48,12 +51,14 @@
                     <div class="modal-body">
                         <form class="form-horizontal">
                             <#list fieldList as field>
-                                <div class="form-group">
-                                    <label class="col-sm-2 control-label">${field.comment}</label>
-                                    <div class="col-sm-10">
-                                        <input v-model="${domain}.${field.nameHump}" class="form-control">
-                                    </div>
+                                <#if field.nameHump!="createdAt" && field.nameHump!="updatedAt">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">${field.comment}</label>
+                                <div class="col-sm-10">
+                                    <input v-model="${domain}.${field.nameHump}" class="form-control">
                                 </div>
+                            </div>
+                                </#if>
                             </#list>
                         </form>
                     </div>

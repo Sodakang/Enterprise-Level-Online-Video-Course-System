@@ -22,24 +22,20 @@
                 <th>Video Length (s)</th>
                 <th>Charge or Not (C: Charge, F: Free)</th>
                 <th>Order</th>
-                <th>Create time</th>
-                <th>Update time</th>
                 <th>Operations</th>
             </tr>
             </thead>
 
             <tbody>
             <tr v-for="section in sections">
-                    <td>{{section.id}}</td>
-                    <td>{{section.title}}</td>
-                    <td>{{section.courseId}}</td>
-                    <td>{{section.chapterId}}</td>
-                    <td>{{section.video}}</td>
-                    <td>{{section.time}}</td>
-                    <td>{{section.charge}}</td>
-                    <td>{{section.sort}}</td>
-                    <td>{{section.createdAt}}</td>
-                    <td>{{section.updatedAt}}</td>
+                <td>{{section.id}}</td>
+                <td>{{section.title}}</td>
+                <td>{{section.courseId}}</td>
+                <td>{{section.chapterId}}</td>
+                <td>{{section.video}}</td>
+                <td>{{section.time}}</td>
+                <td>{{section.charge}}</td>
+                <td>{{section.sort}}</td>
                 <td>
                     <div class="hidden-sm hidden-xs btn-group">
                         <button v-on:click="edit(section)" class="btn btn-xs btn-info">
@@ -63,66 +59,54 @@
                     </div>
                     <div class="modal-body">
                         <form class="form-horizontal">
-                                <div class="form-group">
-                                    <label class="col-sm-2 control-label">ID</label>
-                                    <div class="col-sm-10">
-                                        <input v-model="section.id" class="form-control">
-                                    </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">ID</label>
+                                <div class="col-sm-10">
+                                    <input v-model="section.id" class="form-control">
                                 </div>
-                                <div class="form-group">
-                                    <label class="col-sm-2 control-label">Title</label>
-                                    <div class="col-sm-10">
-                                        <input v-model="section.title" class="form-control">
-                                    </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Title</label>
+                                <div class="col-sm-10">
+                                    <input v-model="section.title" class="form-control">
                                 </div>
-                                <div class="form-group">
-                                    <label class="col-sm-2 control-label">Course ID</label>
-                                    <div class="col-sm-10">
-                                        <input v-model="section.courseId" class="form-control">
-                                    </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Course ID</label>
+                                <div class="col-sm-10">
+                                    <input v-model="section.courseId" class="form-control">
                                 </div>
-                                <div class="form-group">
-                                    <label class="col-sm-2 control-label">Chapter ID</label>
-                                    <div class="col-sm-10">
-                                        <input v-model="section.chapterId" class="form-control">
-                                    </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Chapter ID</label>
+                                <div class="col-sm-10">
+                                    <input v-model="section.chapterId" class="form-control">
                                 </div>
-                                <div class="form-group">
-                                    <label class="col-sm-2 control-label">Video Address</label>
-                                    <div class="col-sm-10">
-                                        <input v-model="section.video" class="form-control">
-                                    </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Video Address</label>
+                                <div class="col-sm-10">
+                                    <input v-model="section.video" class="form-control">
                                 </div>
-                                <div class="form-group">
-                                    <label class="col-sm-2 control-label">Video Length (s)</label>
-                                    <div class="col-sm-10">
-                                        <input v-model="section.time" class="form-control">
-                                    </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Video Length (s)</label>
+                                <div class="col-sm-10">
+                                    <input v-model="section.time" class="form-control">
                                 </div>
-                                <div class="form-group">
-                                    <label class="col-sm-2 control-label">Charge or Not (C: Charge, F: Free)</label>
-                                    <div class="col-sm-10">
-                                        <input v-model="section.charge" class="form-control">
-                                    </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Charge or Not (C: Charge, F: Free)</label>
+                                <div class="col-sm-10">
+                                    <input v-model="section.charge" class="form-control">
                                 </div>
-                                <div class="form-group">
-                                    <label class="col-sm-2 control-label">Order</label>
-                                    <div class="col-sm-10">
-                                        <input v-model="section.sort" class="form-control">
-                                    </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Order</label>
+                                <div class="col-sm-10">
+                                    <input v-model="section.sort" class="form-control">
                                 </div>
-                                <div class="form-group">
-                                    <label class="col-sm-2 control-label">Create time</label>
-                                    <div class="col-sm-10">
-                                        <input v-model="section.createdAt" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-2 control-label">Update time</label>
-                                    <div class="col-sm-10">
-                                        <input v-model="section.updatedAt" class="form-control">
-                                    </div>
-                                </div>
+                            </div>
                         </form>
                     </div>
                     <div class="modal-footer">
