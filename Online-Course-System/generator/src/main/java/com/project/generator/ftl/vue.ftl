@@ -132,7 +132,20 @@
             save() {
                 let _this = this;
                 // Check before saving.
-
+                if (1 != 1
+                    <#list fieldList as field>
+                      <#if field.name!="id" && field.nameHump!="createdAt" && field.nameHump!="updatedAt" && field.nameHump!="sort">
+                        <#if !field.nullAble>
+                    || !Validator.require(_this.${domain}.${field.nameHump}, "${field.comment}")
+                        </#if>
+                        <#if (field.length > 0)>
+                    || !Validator.length(_this.${domain}.${field.nameHump}, "${field.comment}", 1, ${field.length})
+                        </#if>
+                      </#if>
+                    </#list>
+                ) {
+                    return;
+                }
                 Loading.show();
                 _this.$ajax.post(process.env.VUE_APP_SERVER + '/${module}/admin/${domain}/save',
                     _this.${domain}).then((response) => {

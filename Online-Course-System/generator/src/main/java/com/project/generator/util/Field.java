@@ -10,6 +10,8 @@ public class Field {
     private String type; // Field type：char(8)
     private String javaType; // Java type：String
     private String comment; // Use comment as the column name shown on the front-end.
+    private Boolean nullAble;  // Can be null or not
+    private Integer length;  // The length of the value in this field.
 
     public String getName() {
         return name;
@@ -59,6 +61,21 @@ public class Field {
         this.comment = comment;
     }
 
+    public Boolean getNullAble() {
+        return nullAble;
+    }
+
+    public void setNullAble(Boolean nullAble) {
+        this.nullAble = nullAble;
+    }
+
+    public Integer getLength() {
+        return length;
+    }
+
+    public void setLength(Integer length) {
+        this.length = length;
+    }
 
     @Override
     public String toString() {
@@ -69,6 +86,8 @@ public class Field {
         sb.append(", type='").append(type).append('\'');
         sb.append(", javaType='").append(javaType).append('\'');
         sb.append(", comment='").append(comment).append('\'');
+        sb.append(", nullAble=").append(nullAble);
+        sb.append(", length=").append(length);
         sb.append('}');
         return sb.toString();
     }

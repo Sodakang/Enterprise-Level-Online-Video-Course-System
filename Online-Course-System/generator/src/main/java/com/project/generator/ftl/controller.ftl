@@ -41,8 +41,16 @@ public class ${Domain}Controller {
     public ResponseDto<${Domain}Dto> save(@RequestBody ${Domain}Dto ${domain}Dto) {
 //        LOG.info("${domain}Dtp: {}", ${domain}Dto);
         // Check before saving.
-
-
+        <#list fieldList as field>
+        <#if field.name!="id" && field.nameHump!="createdAt" && field.nameHump!="updatedAt" && field.nameHump!="sort">
+            <#if !field.nullAble>
+        ValidatorUtil.require(${domain}Dto.get${field.nameBigHump}(), "${field.comment}");
+            </#if>
+            <#if (field.length > 0)>
+        ValidatorUtil.length(${domain}Dto.get${field.nameBigHump}(), "${field.comment}", 1, ${field.length?c});
+            </#if>
+        </#if>
+        </#list>
         ResponseDto<${Domain}Dto> responseDto = new ResponseDto<>();
         ${domain}Service.save(${domain}Dto);
         responseDto.setContent(${domain}Dto);

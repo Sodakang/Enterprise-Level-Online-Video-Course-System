@@ -41,7 +41,7 @@ public class SectionDto {
     private String charge;
 
     /**
-     * Sort
+     * Order
      */
     private Integer sort;
 

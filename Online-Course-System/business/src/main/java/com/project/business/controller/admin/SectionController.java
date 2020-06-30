@@ -41,8 +41,9 @@ public class SectionController {
     public ResponseDto<SectionDto> save(@RequestBody SectionDto sectionDto) {
 //        LOG.info("sectionDtp: {}", sectionDto);
         // Check before saving.
-
-
+        ValidatorUtil.require(sectionDto.getTitle(), "Title");
+        ValidatorUtil.length(sectionDto.getTitle(), "Title", 1, 50);
+        ValidatorUtil.length(sectionDto.getVideo(), "Video Address", 1, 200);
         ResponseDto<SectionDto> responseDto = new ResponseDto<>();
         sectionService.save(sectionDto);
         responseDto.setContent(sectionDto);
