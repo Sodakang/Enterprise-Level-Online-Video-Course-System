@@ -9,7 +9,7 @@ public class Field {
     private String nameBigHump; // Field name with uppercase hump：CourseId
     private String type; // Field type：char(8)
     private String javaType; // Java type：String
-    private String comment; // Comment：Course|ID
+    private String comment; // Use comment as the column name shown on the front-end.
 
     public String getName() {
         return name;

@@ -9,9 +9,9 @@
 
 drop table if exists `chapter`;
 create table `chapter` (
-    `id` char(8) not null,
-    `course_id` char(8),
-    `name` varchar(50),
+    `id` char(8) not null comment 'ID',
+    `course_id` char(8) comment 'Course ID',
+    `name` varchar(50) comment 'Name',
     primary key (`id`)
 ) engine = innodb default charset = utf8mb4;
 
@@ -38,14 +38,14 @@ insert into `chapter` (id, course_id, name) values ('00000019', '00000000', 'Tes
 
 drop table if exists `section`;
 create table `section` (
-    `id` char(8) not null default '',
-    `title` varchar(50) not null,
-    `course_id` char(8),
-    `chapter_id` char(8),
-    `video` varchar(200),
-    `time` int comment 'Video length in seconds',
-    `charge` char(1) comment 'Charge or not: C means charge and F means free',
-    `sort` int,
+    `id` char(8) not null default '' comment 'ID',
+    `title` varchar(50) not null comment 'Title',
+    `course_id` char(8) comment 'Course ID',
+    `chapter_id` char(8) comment 'Chapter ID',
+    `video` varchar(200) comment 'Video Address',
+    `time` int comment 'Video Length (s)',
+    `charge` char(1) comment 'Charge or Not (C: Charge, F: Free)',
+    `sort` int comment 'Order',
     `created_at` datetime(3) comment 'Create time',
     `updated_at` datetime(3) comment 'Update time',
     primary key (`id`)

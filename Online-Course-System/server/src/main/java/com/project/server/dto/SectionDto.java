@@ -6,42 +6,42 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class SectionDto {
 
     /**
-     * 
+     * ID
      */
     private String id;
 
     /**
-     * 
+     * Title
      */
     private String title;
 
     /**
-     * 
+     * Course ID
      */
     private String courseId;
 
     /**
-     * 
+     * Chapter ID
      */
     private String chapterId;
 
     /**
-     * 
+     * Video Address
      */
     private String video;
 
     /**
-     * Video length in seconds
+     * Video Length (s)
      */
     private Integer time;
 
     /**
-     * Charge or not: C means charge and F means free
+     * Charge or Not (C: Charge, F: Free)
      */
     private String charge;
 
     /**
-     * 
+     * Sort
      */
     private Integer sort;
 
