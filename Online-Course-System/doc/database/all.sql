@@ -53,3 +53,25 @@ create table `section` (
 
 insert into `section` (id, title, course_id, chapter_id, video, time, charge, sort, created_at, updated_at)
 VALUES ('00000001', 'Test Section 01', '00000001', '00000000', '', 500, 'F', 1, now(), now());
+
+drop table if exists course;
+create table course (
+  `id` char(8) not null default '' comment 'ID',
+  `name` varchar(50) not null comment 'Name',
+  `summary` varchar(2000) comment 'Summary',
+  `duration` int default 0 comment 'Duration (seconds)',
+  `price` decimal(8,2) default 0.00 comment 'Price ($)',
+  `image` varchar(100) comment 'Cover Image',
+  `level` char(1) comment 'Level',
+  `charge` char(1) comment 'Charge or Free',
+  `status` char(1) comment 'Status',
+  `enrollment` int default 0 comment 'Enrollment',
+  `sort` integer comment 'Order',
+  `created_at` datetime(3) comment 'Create time',
+  `updated_at` datetime(3) comment 'Update time',
+  primary key (`id`)
+) engine = innodb default charset = utf8mb4;
+
+insert into course (id, name, summary, duration, price, image, level, charge, status, enrollment, sort, created_at, updated_at)
+values ('00000001', 'Test Course 01', 'This is a test course.', 7200, 19.9, '', 0, 'C', 'D', 100, 0, now(), now());
+

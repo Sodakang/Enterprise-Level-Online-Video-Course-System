@@ -51,7 +51,7 @@
                     <div class="modal-body">
                         <form class="form-horizontal">
                             <#list fieldList as field>
-                                <#if field.nameHump!="createdAt" && field.nameHump!="updatedAt">
+                                <#if field.nameHump!="id" && field.nameHump!="createdAt" && field.nameHump!="updatedAt">
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">${field.comment}</label>
                                 <div class="col-sm-10">
@@ -144,7 +144,7 @@
                     || !Validator.require(_this.${domain}.${field.nameHump}, "${field.comment}")
                         </#if>
                         <#if (field.length > 0)>
-                    || !Validator.length(_this.${domain}.${field.nameHump}, "${field.comment}", 1, ${field.length})
+                    || !Validator.length(_this.${domain}.${field.nameHump}, "${field.comment}", 1, ${field.length?c})
                         </#if>
                       </#if>
                     </#list>
