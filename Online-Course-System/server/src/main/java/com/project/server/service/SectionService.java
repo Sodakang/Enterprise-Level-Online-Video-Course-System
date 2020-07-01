@@ -7,6 +7,7 @@ import com.project.server.dto.SectionDto;
 import com.project.server.dto.PageDto;
 import com.project.server.entity.Section;
 import com.project.server.entity.SectionExample;
+import com.project.server.enums.SectionChargeEnum;
 import com.project.server.util.CopyUtil;
 import com.project.server.util.UuidUtil;
 import org.springframework.stereotype.Service;
@@ -56,6 +57,7 @@ public class SectionService {
         section.setCreatedAt(now);
         section.setUpdatedAt(now);
         section.setId(UuidUtil.getShortUuid());
+        section.setCharge(SectionChargeEnum.FREE.getCode());
         sectionMapper.insert(section);
     }
 

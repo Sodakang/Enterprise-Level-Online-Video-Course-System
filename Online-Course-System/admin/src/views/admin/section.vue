@@ -36,7 +36,7 @@
                 <td>{{section.chapterId}}</td>
                 <td>{{section.video}}</td>
                 <td>{{section.time}}</td>
-                <td>{{CHARGE | openKV()}}</td>
+                <td>{{SECTION_CHARGE | openKV()}}</td>
                 <td>{{section.sort}}</td>
                 <td>
                     <div class="hidden-sm hidden-xs btn-group">
@@ -101,7 +101,7 @@
                                 <label class="col-sm-2 control-label">Charge or Free</label>
                                 <div class="col-sm-10">
                                     <select v-model="section.charge" class="form-control">
-                                        <option v-for="o in CHARGE" v-bind:value="o.key">{{o.value}}</option>
+                                        <option v-for="o in SECTION_CHARGE" v-bind:value="o.key">{{o.value}}</option>
                                     </select>
                                 </div>
                             </div>
@@ -133,7 +133,7 @@
           return {
               section: {},
               sections: [],
-              CHARGE: CHARGE
+              SECTION_CHARGE: SECTION_CHARGE
           }
         },
         mounted: function() {
