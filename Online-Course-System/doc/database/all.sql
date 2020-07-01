@@ -44,7 +44,7 @@ create table `section` (
     `chapter_id` char(8) comment 'Chapter ID',
     `video` varchar(200) comment 'Video Address',
     `time` int comment 'Video Length (s)',
-    `charge` char(1) comment 'Charge or Not (C: Charge, F: Free)',
+    `charge` char(1) comment 'Charge or Free',
     `sort` int comment 'Order',
     `created_at` datetime(3) comment 'Create time',
     `updated_at` datetime(3) comment 'Update time',

@@ -36,7 +36,7 @@ public class SectionDto {
     private Integer time;
 
     /**
-     * Charge or Not (C: Charge, F: Free)
+     * Charge or Free
      */
     private String charge;
 

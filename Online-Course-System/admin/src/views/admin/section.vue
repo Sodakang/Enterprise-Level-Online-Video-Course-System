@@ -20,8 +20,10 @@
                 <th>Chapter ID</th>
                 <th>Video Address</th>
                 <th>Video Length (s)</th>
-                <th>Charge or Not (C: Charge, F: Free)</th>
+                <th>Charge or Free</th>
                 <th>Order</th>
+
+
                 <th>Operations</th>
             </tr>
             </thead>
@@ -34,7 +36,7 @@
                 <td>{{section.chapterId}}</td>
                 <td>{{section.video}}</td>
                 <td>{{section.time}}</td>
-                <td>{{section.charge}}</td>
+                <td>{{CHARGE | openKV()}}</td>
                 <td>{{section.sort}}</td>
                 <td>
                     <div class="hidden-sm hidden-xs btn-group">
@@ -96,9 +98,11 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">Charge or Not (C: Charge, F: Free)</label>
+                                <label class="col-sm-2 control-label">Charge or Free</label>
                                 <div class="col-sm-10">
-                                    <input v-model="section.charge" class="form-control">
+                                    <select v-model="section.charge" class="form-control">
+                                        <option v-for="o in CHARGE" v-bind:value="o.key">{{o.value}}</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -128,7 +132,8 @@
         data: function() {
           return {
               section: {},
-              sections: []
+              sections: [],
+              CHARGE: [{key:"C", value:"Charge"}, {key:"F", value:"Free"}]
           }
         },
         mounted: function() {
