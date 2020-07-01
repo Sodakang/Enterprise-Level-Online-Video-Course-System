@@ -1,6 +1,12 @@
 <template>
     <div>
+        <h3>{{course.name}}</h3>
         <p>
+            <router-link  to="/business/course" class="btn btn-white btn-default btn-round">
+                <i class="ace-icon fa fa-arrow-left blue"/>
+                Back to Course
+            </router-link>
+            &nbsp;
             <button  v-on:click="add" class="btn btn-white btn-default btn-round">
                 <i class="ace-icon fa fa-edit blue"/>
                 Create
@@ -83,12 +89,18 @@
         data: function() {
           return {
               chapter: {},
-              chapters: []
+              chapters: [],
+              course: {}
           }
         },
         mounted: function() {
             let _this = this;
             _this.$refs.pagination.size = 5;
+            let course = SessionStorage.get("course") || {};
+            if(Tool.isEmpty(course)) {
+                _this.$router.push("/welcome");
+            }
+            _this.course = course;
             _this.list(1);
             // The method I for making the sidebar active.
             // this.$parent.activeSidebar("business-chapter-sidebar");
