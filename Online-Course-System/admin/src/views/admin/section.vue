@@ -36,7 +36,7 @@
                 <td>{{section.chapterId}}</td>
                 <td>{{section.video}}</td>
                 <td>{{section.time}}</td>
-                <td>{{SECTION_CHARGE | openKV()}}</td>
+                <td>{{SECTION_CHARGE | optionKV(section.charge)}}</td>
                 <td>{{section.sort}}</td>
                 <td>
                     <div class="hidden-sm hidden-xs btn-group">
@@ -128,7 +128,7 @@
     import Pagination from "../../components/pagination";
     export default {
         components: {Pagination},
-        name: "section",
+        name: "business-section",
         data: function() {
           return {
               section: {},
