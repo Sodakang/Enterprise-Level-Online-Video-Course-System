@@ -75,3 +75,6 @@ create table course (
 insert into course (id, name, summary, duration, price, image, level, charge, status, enrollment, sort, created_at, updated_at)
 values ('00000001', 'Test Course 01', 'This is a test course.', 7200, 19.9, '', 0, 'C', 'D', 100, 0, now(), now());
 
+insert into course (id, name, summary, duration, price, image, level, charge, status, enrollment, sort, created_at, updated_at)
+values ('00000000', 'Test Course 00', 'This is a test course.', 7200, 19.9, '', 0, 'C', 'D', 100, 1, now(), now());
+

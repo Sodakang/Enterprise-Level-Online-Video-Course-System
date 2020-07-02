@@ -38,6 +38,11 @@
                         </p>
                         <p>{{course.summary}}</p>
                         <p>
+                            <span class="badge badge-info">{{course.id}}</span>
+                            <span class="badge badge-info">Order: {{course.sort}}</span>
+                            <span class="badge badge-info">{{course.duration}}</span>
+                        </p>
+                        <p>
                             <button v-on:click="toChapter(course)" class="btn btn-white btn-xs btn-info btn-round">
                                 Chapter
                             </button>&nbsp;

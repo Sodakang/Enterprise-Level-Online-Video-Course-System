@@ -1,6 +1,7 @@
 package com.project.business.controller.admin;
 
 import com.project.server.dto.ChapterDto;
+import com.project.server.dto.ChapterPageDto;
 import com.project.server.dto.PageDto;
 import com.project.server.dto.ResponseDto;
 import com.project.server.service.ChapterService;
@@ -26,11 +27,12 @@ public class ChapterController {
      * List query.
      */
     @PostMapping("/list")
-    public ResponseDto<PageDto<ChapterDto>> list(@RequestBody PageDto<ChapterDto> pageDto) {
+    public ResponseDto<PageDto<ChapterDto>> list(@RequestBody ChapterPageDto chapterPageDto) {
 //        LOG.info("pageDto: {}", pageDto);
         ResponseDto<PageDto<ChapterDto>> responseDto = new ResponseDto<>();
-        chapterService.list(pageDto);
-        responseDto.setContent(pageDto);
+        ValidatorUtil.require(chapterPageDto.getCourseId(), "Course ID");
+        chapterService.list(chapterPageDto);
+        responseDto.setContent(chapterPageDto);
         return responseDto;
     }
 

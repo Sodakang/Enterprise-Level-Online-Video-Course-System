@@ -4,6 +4,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.project.server.dao.ChapterMapper;
 import com.project.server.dto.ChapterDto;
+import com.project.server.dto.ChapterPageDto;
 import com.project.server.dto.PageDto;
 import com.project.server.entity.Chapter;
 import com.project.server.entity.ChapterExample;
@@ -24,14 +25,18 @@ public class ChapterService {
     /**
      * List query.
      */
-    public void list(PageDto<ChapterDto> pageDto) {
-        PageHelper.startPage(pageDto.getPage(), pageDto.getSize());  // The first select sentence after startPage() will be executed pagination.
+    public void list(ChapterPageDto chapterPageDto) {
+        PageHelper.startPage(chapterPageDto.getPage(), chapterPageDto.getSize());  // The first select sentence after startPage() will be executed pagination.
         ChapterExample chapterExample = new ChapterExample();
+        ChapterExample.Criteria criteria = chapterExample.createCriteria();
+        if(!StringUtils.isEmpty(chapterPageDto.getCourseId())) {
+            criteria.andCourseIdEqualTo(chapterPageDto.getCourseId());
+        }
         List<Chapter> chapterList = chapterMapper.selectByExample(chapterExample);
         PageInfo<Chapter> pageInfo = new PageInfo<>(chapterList);
-        pageDto.setTotal(pageInfo.getTotal());
+        chapterPageDto.setTotal(pageInfo.getTotal());
         List<ChapterDto> chapterDtoList = CopyUtil.copyList(chapterList, ChapterDto.class);
-        pageDto.setList(chapterDtoList);
+        chapterPageDto.setList(chapterDtoList);
     }
 
     /**
