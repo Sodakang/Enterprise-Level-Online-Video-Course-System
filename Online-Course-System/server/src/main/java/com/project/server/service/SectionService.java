@@ -5,6 +5,7 @@ import com.github.pagehelper.PageInfo;
 import com.project.server.dao.SectionMapper;
 import com.project.server.dto.SectionDto;
 import com.project.server.dto.PageDto;
+import com.project.server.dto.SectionPageDto;
 import com.project.server.entity.Section;
 import com.project.server.entity.SectionExample;
 import com.project.server.enums.SectionChargeEnum;
@@ -25,15 +26,22 @@ public class SectionService {
     /**
      * List query.
      */
-    public void list(PageDto<SectionDto> pageDto) {
-        PageHelper.startPage(pageDto.getPage(), pageDto.getSize());  // The first select sentence after startPage() will be executed pagination.
+    public void list(SectionPageDto sectionPageDto) {
+        PageHelper.startPage(sectionPageDto.getPage(), sectionPageDto.getSize());  // The first select sentence after startPage() will be executed pagination.
         SectionExample sectionExample = new SectionExample();
+        SectionExample.Criteria criteria = sectionExample.createCriteria();
+        if (!StringUtils.isEmpty(sectionPageDto.getCourseId())) {
+            criteria.andCourseIdEqualTo(sectionPageDto.getCourseId());
+        }
+        if (!StringUtils.isEmpty(sectionPageDto.getChapterId())) {
+            criteria.andChapterIdEqualTo(sectionPageDto.getChapterId());
+        }
         sectionExample.setOrderByClause("sort asc");
         List<Section> sectionList = sectionMapper.selectByExample(sectionExample);
         PageInfo<Section> pageInfo = new PageInfo<>(sectionList);
-        pageDto.setTotal(pageInfo.getTotal());
+        sectionPageDto.setTotal(pageInfo.getTotal());
         List<SectionDto> sectionDtoList = CopyUtil.copyList(sectionList, SectionDto.class);
-        pageDto.setList(sectionDtoList);
+        sectionPageDto.setList(sectionDtoList);
     }
 
     /**
